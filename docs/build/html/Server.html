@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cloud Server Modules: &#8212; LoRa Air Quality Sensor 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sensors’ Modules and Methods:" href="sensors.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cloud-server-modules">
+<h1>Cloud Server Modules:<a class="headerlink" href="#cloud-server-modules" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-server">
+<span id="server-py"></span><h2>Server.py<a class="headerlink" href="#module-server" title="Permalink to this headline">¶</a></h2>
+<p>This module provides the functions and configurations of the server when it receives information from the LoRa Network Server</p>
+<dl class="function">
+<dt id="server.get_from_LNS">
+<code class="descclassname">server.</code><code class="descname">get_from_LNS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.get_from_LNS" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method receives the information from the LNS, decodes the data and stores it. Provides the possibility to send the values
+to an external cloud server using a post request.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="server.sendPostLuftdaten">
+<code class="descclassname">server.</code><code class="descname">sendPostLuftdaten</code><span class="sig-paren">(</span><em>pinNumber</em>, <em>sensorID</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#server.sendPostLuftdaten" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will create the header, data and request used to send the values to luftdaten and sends the post request</p>
+<p>arguments:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">PinNumber:</th><td class="field-body"><p class="first">(integer) Luftdaten’s parameter, determines the type of data that will be sent in the post.</p>
+<p>‘x-Pin’:‘1’ SDS011 (Dust sensor in pm2.5 and pm10 in µg/m )</p>
+<p>‘x-Pin’:‘7’ DHT22 or AM2320  (Temperature and Humidity)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">X-Sensor:</th><td class="field-body"><p class="first">(string) ID for the card used to fill the form in luftdaten website
+for pycom LoPy4 it has the format ‘LoPy4-&lt;LoRadevEUI&gt;’</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Data:</th><td class="field-body"><p class="first last">(dictionary) the values received from the LoPy4.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LoRa Air Quality Sensor</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Pycom-LoPy4.html">Pycom LoPy4 Modules:</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloud Server Modules:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-server">Server.py</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="sensors.html" title="previous chapter">Sensors’ Modules and Methods:</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Sergio QUINTERO, Yohann LE GALL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

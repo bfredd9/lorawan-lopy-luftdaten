@@ -1,0 +1,313 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sensors’ Modules and Methods: &#8212; LoRa Air Quality Sensor 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cloud Server Modules:" href="Server.html" />
+    <link rel="prev" title="Pycom LoPy4 Modules:" href="Pycom-LoPy4.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sensors-modules-and-methods">
+<h1>Sensors’ Modules and Methods:<a class="headerlink" href="#sensors-modules-and-methods" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-battery_sensor">
+<span id="battery-sensor"></span><h2>battery sensor:<a class="headerlink" href="#module-battery_sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="battery_sensor.Battery_sensor">
+<em class="property">class </em><code class="descclassname">battery_sensor.</code><code class="descname">Battery_sensor</code><a class="headerlink" href="#battery_sensor.Battery_sensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  class to handle the Battery sensor.</p>
+<dl class="method">
+<dt id="battery_sensor.Battery_sensor.get_voltage">
+<code class="descname">get_voltage</code><span class="sig-paren">(</span><em>nb_values</em><span class="sig-paren">)</span><a class="headerlink" href="#battery_sensor.Battery_sensor.get_voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the voltage value</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gas_sensor">
+<span id="gas-sensor"></span><h2>gas sensor:<a class="headerlink" href="#module-gas_sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gas_sensor.GasSensor">
+<em class="property">class </em><code class="descclassname">gas_sensor.</code><code class="descname">GasSensor</code><span class="sig-paren">(</span><em>i2c_bus</em>, <em>meas_intvl</em><span class="sig-paren">)</span><a class="headerlink" href="#gas_sensor.GasSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle the CO2 and TVOC sensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>i2c_bus</strong> – The <cite>I2C</cite> object to use.</li>
+<li><strong>meas_intvl</strong> – The minimal amount of time between two measurements (in ms).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gas_sensor.GasSensor.get_co2">
+<code class="descname">get_co2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gas_sensor.GasSensor.get_co2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read CO2 concentration (in ppm) or None is last reading
+failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gas_sensor.GasSensor.get_tvoc">
+<code class="descname">get_tvoc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gas_sensor.GasSensor.get_tvoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read TVOC (in ppm) or None is last reading failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gas_sensor.GasSensor.work">
+<code class="descname">work</code><span class="sig-paren">(</span><em>n_try_max</em><span class="sig-paren">)</span><a class="headerlink" href="#gas_sensor.GasSensor.work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a measurement (every minute, if possible), and save baseline
+(every hour, if possible).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n_try_max</strong> – Number of reading tentatives.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gps_sensor">
+<span id="gps-sensor"></span><h2>gps sensor:<a class="headerlink" href="#module-gps_sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gps_sensor.GPSSensor">
+<em class="property">class </em><code class="descclassname">gps_sensor.</code><code class="descname">GPSSensor</code><span class="sig-paren">(</span><em>uart</em><span class="sig-paren">)</span><a class="headerlink" href="#gps_sensor.GPSSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle the GPS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uart</strong> – The <cite>UART</cite> object to use.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gps_sensor.GPSSensor.get_latitude">
+<code class="descname">get_latitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gps_sensor.GPSSensor.get_latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read latitude and longitude or None if last reading
+failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gps_sensor.GPSSensor.get_longitude">
+<code class="descname">get_longitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gps_sensor.GPSSensor.get_longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read latitude and longitude or None if last reading
+failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gps_sensor.GPSSensor.get_time">
+<code class="descname">get_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gps_sensor.GPSSensor.get_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read time or None if last reading failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gps_sensor.GPSSensor.work">
+<code class="descname">work</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gps_sensor.GPSSensor.work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polls the GPS and checks if it has fix to take the measures
+returns True or False</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-humidity_sensor">
+<span id="humidity-sensor"></span><h2>humidity sensor:<a class="headerlink" href="#module-humidity_sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="humidity_sensor.TempHumiditySensor">
+<em class="property">class </em><code class="descclassname">humidity_sensor.</code><code class="descname">TempHumiditySensor</code><span class="sig-paren">(</span><em>i2c_bus</em>, <em>meas_intvl</em><span class="sig-paren">)</span><a class="headerlink" href="#humidity_sensor.TempHumiditySensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle the temperature and humidity sensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>i2c_bus</strong> – The <cite>I2C</cite> object to use.</li>
+<li><strong>meas_intvl</strong> – The minimal amount of time between two measurements (in ms).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="humidity_sensor.TempHumiditySensor.get_humidity">
+<code class="descname">get_humidity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#humidity_sensor.TempHumiditySensor.get_humidity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read temperature or None is last reading failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="humidity_sensor.TempHumiditySensor.get_temperature">
+<code class="descname">get_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#humidity_sensor.TempHumiditySensor.get_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read temperature or None is last reading failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="humidity_sensor.TempHumiditySensor.work">
+<code class="descname">work</code><span class="sig-paren">(</span><em>n_try_max</em><span class="sig-paren">)</span><a class="headerlink" href="#humidity_sensor.TempHumiditySensor.work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a measurement.
+:param n_try_max: Number of reading tentative (this sensor does not always respond…)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pm_sensor">
+<span id="pm-sensor-dust"></span><h2>pm sensor (dust):<a class="headerlink" href="#module-pm_sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pm_sensor.PMSensor">
+<em class="property">class </em><code class="descclassname">pm_sensor.</code><code class="descname">PMSensor</code><span class="sig-paren">(</span><em>uart</em>, <em>meas_dur</em><span class="sig-paren">)</span><a class="headerlink" href="#pm_sensor.PMSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to handle the fine particle sensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>uart</strong> – The <cite>UART</cite> object to use.</li>
+<li><strong>meas_dur</strong> – time duration of the FAN before the measure (in ms).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pm_sensor.PMSensor.get_pm10">
+<code class="descname">get_pm10</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pm_sensor.PMSensor.get_pm10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read PM 10µm concentration (in ppm) different from zero, None if last reading
+failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pm_sensor.PMSensor.get_pm25">
+<code class="descname">get_pm25</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pm_sensor.PMSensor.get_pm25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last read PM 2.5µm concentration (in ppm) or None if last reading
+failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pm_sensor.PMSensor.work">
+<code class="descname">work</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pm_sensor.PMSensor.work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the fan time and last_meas_time. Stops the FAN every
+meas_dur in miliseconds, then do a measurement.
+returns True or False</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LoRa Air Quality Sensor</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Pycom-LoPy4.html">Pycom LoPy4 Modules:</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensors’ Modules and Methods:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pycom-LoPy4.html#module-boot">boot.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pycom-LoPy4.html#module-main">main.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pycom-LoPy4.html#module-loraconnection">loraconnection.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Server.html">Cloud Server Modules:</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="Pycom-LoPy4.html">Pycom LoPy4 Modules:</a><ul>
+      <li>Previous: <a href="Pycom-LoPy4.html" title="previous chapter">Pycom LoPy4 Modules:</a></li>
+      <li>Next: <a href="Server.html" title="next chapter">Cloud Server Modules:</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Sergio QUINTERO, Yohann LE GALL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/sensors.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pycom LoPy4 Modules: &#8212; LoRa Air Quality Sensor 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sensors’ Modules and Methods:" href="sensors.html" />
+    <link rel="prev" title="Welcome to LoRa Air Quality Sensor’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="pycom-lopy4-modules">
+<h1>Pycom LoPy4 Modules:<a class="headerlink" href="#pycom-lopy4-modules" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors’ Modules and Methods:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-battery_sensor">battery sensor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-gas_sensor">gas sensor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-gps_sensor">gps sensor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-humidity_sensor">humidity sensor:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-pm_sensor">pm sensor (dust):</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="module-boot">
+<span id="boot-py"></span><h2>boot.py<a class="headerlink" href="#module-boot" title="Permalink to this headline">¶</a></h2>
+<p>In this module is the configuration of the LoPy4 when it boots, the interfaces and hardware features availables at the booting</p>
+</div>
+<div class="section" id="module-main">
+<span id="main-py"></span><h2>main.py<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h2>
+<p>Main module:</p>
+<p>Contains the main execution, the constants to create a message to be sent and the creation of the sensors.</p>
+<dl class="function">
+<dt id="main.isTimeToTakeMeasure">
+<code class="descclassname">main.</code><code class="descname">isTimeToTakeMeasure</code><span class="sig-paren">(</span><em>sensorLastMeasure</em>, <em>sensorMeasureInterval</em><span class="sig-paren">)</span><a class="headerlink" href="#main.isTimeToTakeMeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies if the measure interval of a given sensor is completed and returns True or False
+Arguments:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">SensorLastMeasure:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Time of the last measure taken in miliseconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">SensorMeasureInterval:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Interval of time predefined between each measure in miliseconds</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.main">
+<code class="descclassname">main.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the Main while loop, where in each iteration
+based on measurement predefined intervals takes a measure and stores it.
+When the send time interval is achieved, all the measures taken at that moment
+are saved in a message and are sent to the server.
+You can modify the diferent intervals here</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-loraconnection">
+<span id="loraconnection-py"></span><h2>loraconnection.py<a class="headerlink" href="#module-loraconnection" title="Permalink to this headline">¶</a></h2>
+<p>This Module handles the configuration of the socket to create the LoRa
+connection to the server.
+You have to modify the app_eui &amp; the app_key for the OTAA authentication with your Lora Gateway</p>
+<dl class="function">
+<dt id="loraconnection.get_time">
+<code class="descclassname">loraconnection.</code><code class="descname">get_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#loraconnection.get_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sending of the Messages to the LoRa SERVER for getting the datetime</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="loraconnection.joinLNS">
+<code class="descclassname">loraconnection.</code><code class="descname">joinLNS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#loraconnection.joinLNS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creation of the LoRa Connection</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="loraconnection.sendMessage">
+<code class="descclassname">loraconnection.</code><code class="descname">sendMessage</code><span class="sig-paren">(</span><em>msg_cbor</em><span class="sig-paren">)</span><a class="headerlink" href="#loraconnection.sendMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sending of the Messages to the LoRa SERVER</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Msg_cbor:</th><td class="field-body">Message Encoded in Cbor with the measures taken.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LoRa Air Quality Sensor</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pycom LoPy4 Modules:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html">Sensors’ Modules and Methods:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-boot">boot.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-main">main.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-loraconnection">loraconnection.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Server.html">Cloud Server Modules:</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to LoRa Air Quality Sensor’s documentation!</a></li>
+      <li>Next: <a href="sensors.html" title="next chapter">Sensors’ Modules and Methods:</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Sergio QUINTERO, Yohann LE GALL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Pycom-LoPy4.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
