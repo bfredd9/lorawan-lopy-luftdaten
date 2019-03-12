@@ -31,8 +31,8 @@ capteur-de-qualite-de-l-air/
 |-- README.md
 `-- docs/
     |-- MakeFile
-    |-- build/
-    `-- source/         <-- Documentation root directory
+    |-- build/         <-- Documentation root directory
+    `-- source/ 
         |-- _static/
         |-- _templates/
         |-- conf.py
