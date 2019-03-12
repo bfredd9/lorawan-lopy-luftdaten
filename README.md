@@ -14,6 +14,7 @@ One Paragraph of project description goes here
 
 ### Documentation
 
+```bash
 capteur-de-qualite-de-l-air/
 `-- lopy_dir/
     |-- lib/
@@ -39,6 +40,7 @@ capteur-de-qualite-de-l-air/
         |-- Pycom-LoPy4.rst
         |-- sensors.rst
         |-- Server.rst
+```
 
 This documentation is created using Sphinx, to install sphinx in ubuntu use this command:
 
